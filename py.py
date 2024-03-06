@@ -8,7 +8,7 @@ from sklearn.preprocessing import StandardScaler
 model = joblib.load('restaurant_review_model.pkl')
 
 # Load your DataFrame with unique values
-df_unique_values = pd.read_csv(r'C:\Users\ziadz\Desktop\py project\archive (8)\adult.csv')
+df_unique_values = pd.read_csv('adult.csv')
 
 # Define the feature input function
 def user_input_features():
