@@ -45,5 +45,5 @@ prediction = 0
 
 # Display the prediction
 st.subheader('Prediction')
-income_category = '<=50K' if prediction[0] == 0 else '>50K'
+income_category = '<=50K' if prediction == 0 else '>50K'
 st.write(income_category)
