@@ -157,3 +157,5 @@ prediction = model.predict(df_aligned)
 st.subheader('Prediction')
 income_category = '<=50K' if prediction[0] == 1 else '\>50K'
 st.write(income_category)
+
+print()
