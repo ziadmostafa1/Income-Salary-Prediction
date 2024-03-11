@@ -52,41 +52,9 @@ st.subheader('User Input features')
 st.write(input_df)
 input_df.columns =['age', 'workclass', 'educational-num', 'marital-status', 'occupation', 'gender', 'hours-per-week', 'native-country']
 
-def preprocess_data(df):
-    # Polynomial features for 'Age'
-    poly_features1 = df[['age']]
-    scaler = PolynomialFeatures(degree=2, include_bias=True)
-    poly_features_transformed1 = scaler.fit_transform(X=poly_features1)
-    poly_features_df1 = pd.DataFrame(poly_features_transformed1, columns=['Age0', 'Age1', 'Age2'])
-
-    # Polynomial features for 'Hours_per_Week'
-    poly_features2 = df[['hours-per-week']]
-    scaler = PolynomialFeatures(degree=2, include_bias=True)
-    poly_features_transformed2 = scaler.fit_transform(X=poly_features2)
-    poly_features_df2 = pd.DataFrame(poly_features_transformed2, columns=['hours-per-week0', 'hours-per-week1', 'hours-per-week2'])
-
-    # Concatenate the polynomial features
-    concatenated_df = pd.concat([poly_features_df1, poly_features_df2], axis=1)
-
-    # Standardize 'Age' and 'Hours_per_Week'
-    scaler = StandardScaler()
-    df['age'] = scaler.fit_transform(df[['age']])
-    df['hours-per-week'] = scaler.fit_transform(df[['hours-per-week']])
-
-    # Drop the original 'Age' and 'Hours_per_Week' columns
-    df.drop(['age', 'hours-per-week'], axis=1, inplace=True)
-
-    # Concatenate the original DataFrame with the polynomial features DataFrame
-    df = pd.concat([df, concatenated_df], axis=1)
-
-    # Select the columns to keep
-    columns_to_keep = ['workclass', 'educational-num', 'marital-status', 'occupation', 'gender', 'native-country',  'Age0', 'Age1', 'Age2' ,'hours-per-week0', 'hours-per-week1','hours-per-week2' ]
-    df = df[columns_to_keep]
-
-    return df
 
 # Use the function to preprocess df1
-df_transformed = preprocess_data(input_df)
+df_transformed = input_df.copy()
 
 def align_dataframe(df, model_columns):
     # Create a new DataFrame with the same number of rows, filled with zeros
@@ -112,8 +80,7 @@ def align_dataframe(df, model_columns):
 
 
 # Use the function to align df_transformed
-model_columns = ['educational-num', 'gender', 'Age0', 'Age1', 'Age2',
-       'hours-per-week0', 'hours-per-week1', 'hours-per-week2',
+model_columns = ['educational-num', 'gender', 'age','hours-per-week',
        'workclass_Federal-gov', 'workclass_Local-gov',
        'workclass_Never-worked', 'workclass_Private',
        'workclass_Self-emp-inc', 'workclass_Self-emp-not-inc',
