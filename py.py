@@ -63,7 +63,7 @@ def align_dataframe(df, model_columns):
     # For the specified columns, check if the values match the column names in model_columns
     for column in ['workclass', 'marital-status', 'occupation', 'native-country']:
         if column in df.columns:
-            for index, value in df[column].iteritems():
+            for index, value in df[column].items():
                 column_name = f"{column}_{value}"
                 if column_name in model_columns:
                     aligned_df.at[index, column_name] = 1
