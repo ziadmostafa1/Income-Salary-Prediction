@@ -1,4 +1,3 @@
-```markdown
 # Salary Prediction Web App
 
 **Special Thanks to Saher Mohammed for their significant contributions to this project.**
