@@ -65,4 +65,3 @@ For inquiries or collaboration, feel free to reach out to the project contributo
 - **Saher Mohammed:** [LinkedIn](https://www.linkedin.com/in/sahermuhamed/), Email: sahermuhamed176@gmail.com
 
 Feel free to explore and enhance this project!
-```
